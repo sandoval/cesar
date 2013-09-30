@@ -1,6 +1,8 @@
 package br.unb.cbsoft2013.cesar.tests;
 
+import br.unb.cbsoft2013.cesar.CaesarStrategy;
 import br.unb.cbsoft2013.cesar.Main;
+import br.unb.cbsoft2013.cesar.ROT13Strategy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,6 +30,19 @@ public class MainTest {
     @Test
     public void testDecodeCeasarCipher() {
         assertEquals("test", main.decipher("whvw"));
+    }
+
+    @Test
+    public void testCaesarWithStrategy() {
+        assertEquals("whvw", main.cipherGeneral("test", new CaesarStrategy()));
+        assertEquals("test", main.decipherGeneral("whvw", new CaesarStrategy()));
+        assertEquals("zz", main.decipherGeneral("cc", new CaesarStrategy()));
+    }
+
+    @Test
+    public void testRot13() {
+        assertEquals("uryyb", main.cipherGeneral("hello", new ROT13Strategy()));
+        assertEquals("hello", main.decipherGeneral("uryyb", new ROT13Strategy()));
     }
 
     @After

@@ -1,5 +1,7 @@
 package br.unb.cbsoft2013.cesar;
 
+import java.math.BigDecimal;
+
 public class Main {
     private static final int ENCODE = 3;
     private static final int DECODE = -3;
@@ -23,6 +25,8 @@ public class Main {
             char c = input.charAt(i);
             int index = alphabet.indexOf(c);
             int newIndex = (index + encodeDecode) % 26;
+            if (newIndex<0)
+                newIndex = 26 + newIndex;
             if (index >= 0) {
                 result.append(alphabet.charAt(newIndex));
             } else {
@@ -32,4 +36,11 @@ public class Main {
         return result.toString();
     }
 
+    public String cipherGeneral(String test, CipherStrategy caesarStrategy) {
+        return cipher(test, caesarStrategy.strategy());
+    }
+
+    public String decipherGeneral(String cypherText, CipherStrategy cipherStrategy) {
+        return cipher(cypherText, -cipherStrategy.strategy());
+    }
 }
