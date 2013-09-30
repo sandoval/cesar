@@ -20,4 +20,20 @@ public class Main {
         }
         return result.toString();
     }
+
+    public String decipher(String input) {
+        StringBuilder result = new StringBuilder();
+        for(int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            int index = alphabet.indexOf(c);
+            int newIndex = (index - 3) % 26;
+            if (index >= 0) {
+                result.append(alphabet.charAt(newIndex));
+            } else {
+                result.append(c);
+            }
+        }
+        return result.toString();
+
+    }
 }

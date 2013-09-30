@@ -12,15 +12,22 @@ import static org.junit.Assert.assertEquals;
  * Created by sandoval for cesar
  */
 public class MainTest {
+
+    private Main main;
+
     @Before
     public void setUp() throws Exception {
-
+        main = new Main();
     }
 
     @Test
     public void testCaesarCipher() {
-        Main main = new Main();
         assertEquals("whvw", main.cipher("test"));
+    }
+
+    @Test
+    public void testDecodeCeasarCipher() {
+        assertEquals("test", main.decipher("whvw"));
     }
 
     @After
